@@ -20,6 +20,7 @@ export class BlogDetailComponent {
   id :string ='';
   blob: any;
   imageUrl: string | ArrayBuffer | null = '';
+  showBlogInformation :boolean = false;
 
   constructor(private route: ActivatedRoute, private router :Router,private blogService : BlogService,private dialog: MatDialog,private spinner: NgxSpinnerService) { 
     // this.blogData = this.router.getCurrentNavigation()?.extras.state;
@@ -37,6 +38,7 @@ export class BlogDetailComponent {
               this.imageUrl = url;
               console.log(this.imageUrl);
               this.blogData = data;
+              this.showBlogInformation = true;
               this.spinner.hide();
             })
           }

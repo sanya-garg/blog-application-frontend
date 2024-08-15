@@ -1,0 +1,26 @@
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+    <!-- Container wrapper -->
+    <div class="container p-2">
+  
+  
+      <!-- Collapsible wrapper -->
+      <div class="collapse navbar-collapse" id="navbarButtonsExample">
+        <!-- Left links -->
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <div class="nav-link" class="heading"><strong>Blogger</strong></div>
+          </li>
+        </ul>
+        <!-- Left links -->
+  
+        <div class="d-flex align-items-center">
+        </div>
+        <div routerLink="/home" style="cursor: pointer;margin-right:20px">Home</div>
+        <div style="cursor: pointer;margin-right:20px">{{username}}</div>
+        <a class="nav-link" style="margin-left:5px; cursor: pointer;" (click)="logout()"><strong>Logout</strong></a>
+      </div>
+      <!-- Collapsible wrapper -->
+    </div>
+    <!-- Container wrapper -->
+  </nav>

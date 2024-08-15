@@ -1,0 +1,64 @@
+<section class="vh-100 bg-image"
+  style="background-image: url(signup.jpg);">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+              <form #userForm="ngForm" (ngSubmit)="onSubmit()">
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                  <label class="form-label" for="username">Username*</label>
+                  <input type="text" name="username" [(ngModel)]="signup.username" class="form-control form-control-lg" #username="ngModel" required minlength="4"/>
+                  <div *ngIf="username.invalid &&(username.touched || username.dirty)" style="color:red">
+                    <div *ngIf="username.hasError('required')" style="color:red;margin-top:10px">
+                        Username is required
+                    </div>
+                    <div *ngIf="username.hasError('minlength')" style="color:red;margin-top:10px">
+                        Username should have atleast 4 characters
+                    </div>
+                </div>
+                </div>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <label class="form-label" for="email">Email*</label>
+                  <input type="email" name="email" [(ngModel)]="signup.email" class="form-control form-control-lg" #email="ngModel" required
+                  pattern="[A-Za-z0-9\._%+\-]+@[A-Za-z0-9\.\-]+\.[A-Za-z]{2,}" />
+                  <div *ngIf="email.invalid &&(email.touched || email.dirty)" style="color:red">
+                    <div *ngIf="email.hasError('required')" style="color:red;margin-top:10px">
+                        Email is required
+                    </div>
+                    <div *ngIf="email.hasError('pattern')" style="color:red;margin-top:10px">
+                        Email is not valid
+                    </div>
+                </div>
+                </div>
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="password">Password*</label>
+                  <input type="password" name="password" [(ngModel)]="signup.password" class="form-control form-control-lg" #password="ngModel" required />
+                  <div [hidden]="password.valid || password.pristine" style="color:red;margin-top:10px">
+                      Password is required
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                    <button type="submit" class="form-control btn submit px-3" [disabled]="userForm.invalid">Sign Up</button>
+                    </div>
+
+                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a routerLink=""
+                    class="fw-bold text-body"><u>Login here</u></a></p>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

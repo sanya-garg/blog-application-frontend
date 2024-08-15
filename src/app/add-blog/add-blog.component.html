@@ -1,0 +1,50 @@
+<app-nav-bar></app-nav-bar>
+<section class="container col-lg-8 mx-auto resume-form-section">
+    <form #BlogForm="ngForm" (ngSubmit)="onSubmit()">
+       <div>
+          <div>
+             <h1 style="margin-top:100px;" class="heading"><b>Blog Details</b></h1>
+             <hr />
+             <div>
+                <div class="mb-3">
+                   <label for="formControlName" class="form-label">Title*</label>
+                   <input type="text" class="form-control" name ="title" [(ngModel)]="blog.title" aria-describedby="nameHelp" required #title="ngModel">
+                   <div [hidden]="title.valid || title.pristine" style="color:red;margin-top:10px">
+                    Title is required
+                </div>
+                </div>
+                <div class="mb-3">
+                    <label for="formControlName" class="form-label">Body*</label>
+                    <textarea class="form-control" name ="body" [(ngModel)]="blog.body"  rows="3" cols="100" required minlength="50" #body="ngModel"></textarea>
+                    <div *ngIf="body.invalid &&(body.touched || body.dirty)">
+                    <div *ngIf="body.hasError('required')" style="color:red;margin-top:10px">
+                        Body is required
+                    </div>
+                    <div *ngIf="body.hasError('minlength')" style="color:red;margin-top:10px">
+                        Body should have atleast 50 characters
+                    </div>
+                    </div>
+                 </div>
+                 <div class="mb-3" *ngIf="!id">
+                    <label for="formControlName" class="form-label">Image Upload*</label>
+                    <input type="file" class="form-control" (change)="fileChange($event)" name ="coverImageURL" [(ngModel)]="blog.coverImageURL" aria-describedby="nameHelp" required #file="ngModel">
+                    <div [hidden]="file.valid || file.pristine" style="color:red;margin-top:10px">
+                        File is required
+                    </div>
+                 </div>
+                
+             </div>
+           
+          </div>
+       </div>
+       <button class="btn calendar" type="submit" [disabled]="BlogForm.invalid">Submit</button>
+    </form>
+ </section>
+ <ngx-spinner
+  bdColor="rgba(51,51,51,0.8)"
+  size="medium"
+  color="#fff"
+  type="ball-scale-multiple"
+>
+  <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>
